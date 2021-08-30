@@ -2,8 +2,8 @@
 CC = gcc
 Cflags = -O -std=gnu11
 LDLIBS = -lm -lgsl
-MAINFILE = main #name of the main file where i do like int main(void), and call the file like "main.c"
-
+MAINFILE = linear #name of the main file where i do like int main(void), and call the file like "main.c"
+# The name of this variable should not be "main.c" but just "main"
 
 default: out.txt
 	cat out.txt
@@ -41,8 +41,8 @@ clean:
 	$(RM) $(addsuffix .pdf,$(MAINFILE))
 	$(RM) $(addsuffix .log,$(MAINFILE))
 	$(RM) $(addsuffix .aux,$(MAINFILE))
-
-
+	$(RM) $(addsuffix .out,$(MAINFILE))
+	$(RM) $(addsuffix Notes.bib,$(MAINFILE))
 
 .PHONY: test
 test:

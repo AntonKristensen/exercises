@@ -1,0 +1,67 @@
+\documentclass[a4paper,reprint,nofootinbib,aps,pra]{revtex4-1}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}                                               %extra characters
+\usepackage{graphicx}                                                  %include graphics
+\usepackage{float}                                                     %using H,h etc. to position floats
+\usepackage[colorlinks = true, citecolor=blue]{hyperref}               %references are coloured and correctly sends reader to label
+\usepackage{color}                                                     %coloured text width fx. {\color{red} text}
+\usepackage{booktabs}                                                  %extra table tools
+%\usepackage{physics}		                                       %physics package
+%\usepackage{siunitx}	                                               %\SI{<tal>}{<enhed>}, \si{<enhed>}
+\usepackage{amsmath}
+%\numberwithin{equation}{section}                                       %equations have section number as well
+\usepackage{amssymb}
+\usepackage{bm}                                                        %bold font in math \bm{}
+\usepackage{mathtools}                                                 %extra maths
+\mathtoolsset{showonlyrefs = true}                                     %only numbers equations etc. if they are referenced to
+\usepackage{cancel}                                                    %\cancel{} crosses out parts of equation
+%\usepackage{tensor}                                                    %\indices{^a_b^{cd}_e} for tensor notation, * gives collapse
+\usepackage{tikz}                                                      %drawing figures
+\usepackage[font=small,labelfont=bf,textfont=it]{caption}              %caption formatting
+\raggedbottom                                                          %helps to fix bottom (most of the time)
+\setlength\parindent{0pt}                                              %Ingen indents
+
+
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.5\textwidth]{picture.jpg}
+%    \caption{Caption.}
+%    \label{fig:label}
+%\end{figure} 
+
+%\begin{table}[]
+%\begin{tabular}{|l|l|}
+%\hline
+%A & 25  \\ \hline
+%E (MeV) & 31.28 \\ \hline
+%\end{tabular}
+%\caption{Caption.}
+%\label{tab:my-table}
+%\end{table}
+
+
+\begin{document}
+\title{Title}
+\author{Anton Rindom}
+
+
+\maketitle
+
+
+
+
+
+
+
+
+\begin{thebibliography}{}
+\bibitem{Book} Zelevinsky & Volya, Wiley 2017.  "Physics of Atomic Nuclei".
+
+\end{thebibliography}
+
+\end{document}
+
+

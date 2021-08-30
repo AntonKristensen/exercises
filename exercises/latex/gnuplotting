@@ -1,0 +1,10 @@
+set terminal latex
+
+set output "sin.tex"
+plot [-10:10] sin(x)
+
+set output "exponentialgraph.tex"
+plot [-5:5] exp(x)
+
+set output "expapp.tex"
+plot "expapp.data"

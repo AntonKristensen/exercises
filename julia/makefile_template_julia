@@ -1,0 +1,49 @@
+#makefile til at lave matematik
+CC = gcc
+CFLAGS = -O -std=gnu11
+LDLIBS = -lm
+MAINFILE = math #name of the main file where i do like int main(void), and call the file like "math.c"
+
+
+#Now for including julia stuff
+JL_SHARE = $(shell julia -e 'print(joinpath(Sys.BINDIR, Base.DATAROOTDIR, "julia"))') #finds julia directory
+CFLAGS += $(shell $(JL_SHARE)/julia-config.jl --cflags)
+CXXFLAGS += $(shell $(JL_SHARE)/julia-config.jl --cflags)
+LDFLAGS += $(shell $(JL_SHARE)/julia-config.jl --ldflags)
+LDLIBS += $(shell $(JL_SHARE)/julia-config.jl --ldlibs)
+# "+=" appends the string to the variable, so maybe it doesn't work when i haven't defined fx CXXFLAGS yet
+
+#Remember to -  #include "julia.h" -  in the headers of your c program
+# you can run "JULIA_DEFINE_FAST_TLS() once at the top (over int main()) to make the program fast somehow.
+
+#Julia code is then called inside a c program by:
+
+#jl_init()
+#jl_eval_string("   
+#enter your julia code here
+#     ")
+#jl_atexit_hook(0)             this one command closes stuff nicely, for good practice
+
+default: out.txt
+	cat out.txt
+
+out.txt: $(MAINFILE)
+	./$(MAINFILE) > out.txt
+
+hello: $(MAINFILE).o
+	$(CC) -o $(MAINFILE) $(MAINFILE).o $(LDLIBS)
+
+hello.o: $(MAINFILE).c
+	$(CC) $(CFLAGS) -c $(MAINFILE).c
+
+.PHONY: clean
+clean:
+	$(RM) $(MAINFILE).o $(MAINFILE) out.txt
+
+.PHONY: test
+test:
+	echo $(LDLIBS)
+	echo $(CC)
+	echo $(RM)
+
+

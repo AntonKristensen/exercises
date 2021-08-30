@@ -41,8 +41,8 @@ clean:
 	$(RM) $(addsuffix .pdf,$(MAINFILE))
 	$(RM) $(addsuffix .log,$(MAINFILE))
 	$(RM) $(addsuffix .aux,$(MAINFILE))
-
-
+	$(RM) $(addsuffix .out,$(MAINFILE))
+	$(RM) $(addsuffix Notes.bib,$(MAINFILE))
 
 .PHONY: test
 test:

@@ -1,0 +1,22 @@
+Ok så når jeg kører ubuntu via WSL, så har det ikke ligefrem nem adgang til en måde at lave nye vinduer med grafik på
+
+Det man skal gøre er at installere noget server software noget, på windows selv, som hedder "xming".
+Det skal så launches og man skal huske at trykke på den knap der giver "no access control".
+Det er altså en server som så kan hoste de billeder man sender den, så man skal sætte den xming server
+som sin adresse. 
+
+Download desuden nogle apps eller sådan noget (?) med:
+
+sudo apt-get install x11-apps
+
+Det giver en app "xeyes" som man bare skriver i shell terminalen og kører, for at teste grafik etc.
+
+Man fortæller hvor ens display skal være med en kommando i shellen med "export DISPLAY=foo".
+Fx virker det lige nu hvis jeg skriver "export DISPLAY=172.27.128.1:0.0"
+
+Der skulle være en metode til at skrive det ind i en eller anden config fil så den selv finder hvad den skal sætte det til.
+Jep det ser ud til at
+"export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
+sætter éns display til det rigtige måske?
+
+Så den linje klapper man bare in i sin .bashrc fil allerneders

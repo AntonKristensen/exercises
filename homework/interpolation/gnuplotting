@@ -1,0 +1,59 @@
+set terminal pdf
+
+# Line width of the axes
+set border linewidth 1.5
+set colorsequence podo
+
+# Trying to make a decent linestyle
+set style line 1 pointtype 7 pointsize 0.5
+set style line 2 linetype 1 linewidth 1
+
+# Trying to make decent formatting
+set grid
+
+
+# Linear interpolation plot
+set output "./tex/linterp.pdf"
+
+funktion(x) = sin(x) * exp(-x/5)
+plot [0:20] funktion(x) with lines linecolor 'black' linewidth 2, \
+	"./data/data.data" ls 1 linecolor 'black', \
+	"./data/linterp.data" with lines ls 2 linecolor 'red', \
+	"./data/gsllinterp.data" with lines dashtype '.  ' linecolor "blue" linewidth 4
+
+# Integrated linear interpolation plot
+set output "./tex/intlinterp.pdf
+
+intfunktion(x) = - exp(-x/5) * (sin(x) + 5*cos(x)) * 5 / 26
+inte(x) = intfunktion(x) - intfunktion(0)
+plot [0:20] inte(x) with lines linecolor 'black', \
+	"./data/intlinterp.data" with lines ls 2 linecolor 'red', \
+	"./data/gslintlinterp.data" with lines dashtype '.  ' linecolor "blue" linewidth 4
+
+
+# Quadratic interplotlation plot
+set output "./tex/qinterp.pdf"
+
+funktion(x) = sin(x) * exp(-x/5)
+plot [0:20] funktion(x) with lines linecolor 'black' linewidth 2, \
+	"./data/data.data" ls 1 linecolor 'black', \
+	"./data/qinterp.data" with lines ls 2 linecolor 'red'
+
+set output "./tex/diffqinterp.pdf"
+funktion(x) = (exp(-x/5) * (5 * cos(x) - sin(x)))/5
+plot [0:20] funktion(x) with lines linecolor 'black' linewidth 2, \
+	"./data/diffqinterp.data" with lines ls 2 linecolor 'red'
+
+set output "./tex/intqinterp.pdf"
+funktion(x) =0 - (exp(-x/5) * (5 * cos(x) + sin(x))) * 5/26
+funke(x) = funktion(x) - funktion(0)
+plot [0:20] funke(x) with lines linecolor 'black' linewidth 2, \
+	"./data/intqinterp.data" with lines ls 2 linecolor 'red'
+
+
+
+
+
+
+# når jeg plotter dataet så skriv evt også:
+# dashtype '-'

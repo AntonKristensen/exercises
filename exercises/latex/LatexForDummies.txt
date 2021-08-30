@@ -1,0 +1,31 @@
+Ok så for at lave noget i latex, så allerførst skriv en eller anden fil som normal latex
+
+kald den fx "hyggelidavs.tex". Når den så er skrevet færdig, så skriv i terminalen "latex hyggelidavs.tex".
+Det giver en .dvi fil. Den kan så laves til pdf ved at skrive "dvipdf hyggelidavs.dvi".
+Så kan du finde den i explorer ved at skrive "explorer.exe ." i terminalen for at åbne det i windows.
+
+
+
+
+For at lave en figur i Latex:
+skriv "gnuplot" i terminalen for at gå i gnuplot environment.
+Skriv "set terminal latex"
+Skriv "set output "foo.tex""
+Skriv "plot [-3,3] sin(x)"
+
+Så har man lavet et plot. Man kan så bruge det ved at klatte det her ind i sin latex main fil:
+
+\begin{figure}
+\include{foo.tex}
+\end{figure}
+
+
+Man kan også bare lave en fil hvor man skriver alle sine gnuplot kommandoer, og så bare skrive noget i stil med:
+
+gnuplot -e 'load "input-file"'
+
+Desuden så kan man smide sit data ud i filer. Fx fprintf(stdout,"%f\t%f\n,x[i],y[i]) inde i et lille loop.
+\t og \n sørger for at det er et format man nemt kan loade med gnuplot. Fx skriver man bare i sit gnuplot dokument:
+
+plot "file.data"
+

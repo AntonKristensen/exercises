@@ -2,7 +2,7 @@
 CC = gcc
 Cflags = -O -std=gnu11
 LDLIBS = -lm -lgsl
-MAINFILE = main #name of the main file where i do like int main(void), and call the file like "main.c"
+MAINFILE = interpolation #name of the main file where i do like int main(void), and call the file like "main.c"
 
 
 default: out.txt
@@ -21,13 +21,14 @@ $(addsuffix .o,$(MAINFILE)): $(addsuffix .c,$(MAINFILE))
 	$(CC) $(CFLAGS) -c $^
 
 
-# I think this should work to give me a plotting macro maybe?
+# I think this should work to give me a plotting macro maybe? Remember to call your plotting file "gnuplotting"
 plots: gnuplotting
 	gnuplot -e 'load "gnuplotting"'
 
-# I think this should work to give me a pdf from latex maybe? Yep! Call the latex file for "mainfile.tex"
+# I think this should work to give me a pdf from latex maybe? Yep! Call the latex file "mainfile.tex"
 report: $(addsuffix .tex,$(MAINFILE))
 	pdflatex $^
+
 
 
 
@@ -41,6 +42,8 @@ clean:
 	$(RM) $(addsuffix .pdf,$(MAINFILE))
 	$(RM) $(addsuffix .log,$(MAINFILE))
 	$(RM) $(addsuffix .aux,$(MAINFILE))
+	$(RM) $(addsuffix .out,$(MAINFILE))
+	$(RM) $(addsuffix Notes.bib,$(MAINFILE))
 
 
 

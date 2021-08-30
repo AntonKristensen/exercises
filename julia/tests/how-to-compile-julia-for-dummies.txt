@@ -1,0 +1,10 @@
+ok så det der skal til er at man definerer sit julia directory som hele pathen, fx i mit tilfælde skriver man i shellen:
+Desuden skal man selvfølgelig have installeret en mappe med julia et sted, og så skrive en linje ind i .bashrc filen, som 
+ligger i ens home, altså cd ~. Det er en skjult fil desuden, den der .bashrc.
+
+
+JULIA_DIR="/home/rindom/julia-directory"
+
+Og så kan man compile et stykke julia inde i C ligesom i eksemplet med juliaembedding.c ved at bruge kommandoen
+
+gcc -o DetDuVilHaveResultatetTilAtHedde -fPIC -I$JULIA_DIR/include/julia -L$JULIA_DIR/lib -Wl,-rpath,$JULIA_DIR/lib DetSomDinFilMedKodeHedder -ljulia

@@ -1,20 +1,20 @@
 #makefile til at lave matematik
 CC = gcc
-Cflags = -O -std=gnu11
+Cflags = -O -std=gnu11 -pthread
 LDLIBS = -lm
-MAINFILE = math
+MAINFILE = montecarlo #name of the main file where i do like int main(void), and call the file like "main.c"
 
 
 default: out.txt
 	cat out.txt
 
 out.txt: $(MAINFILE)
-	./$(MAINFILE) > out.txt
+	./$(MAINFILE) 10 1 > out.txt
 
-hello: $(MAINFILE).o
-	$(CC) -o $(MAINFILE) $(MAINFILE).o $(LDLIBS)
+compiling: $(MAINFILE).o
+	$(CC) -o (MAINFILE) $(MAINFILE).o
 
-hello.o: $(MAINFILE).c
+linking: $(MAINFILE).c
 	$(CC) $(CFLAGS) -c $(MAINFILE).c
 
 .PHONY: clean
